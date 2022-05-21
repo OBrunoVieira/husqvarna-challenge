@@ -2,6 +2,8 @@ package com.husqvarna.challenge.di
 
 import android.content.Context
 import com.husqvarna.challenge.BuildConfig.*
+import com.husqvarna.challenge.extensions.isNetworkConnected
+import com.husqvarna.challenge.network.Headers
 import com.husqvarna.challenge.network.MoviesDataSource
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
@@ -37,28 +39,28 @@ private fun buildOkHttpClient(context: Context) = run {
         .connectTimeout(60L, TimeUnit.SECONDS)
         .readTimeout(60L, TimeUnit.SECONDS)
         .addInterceptor(loggingInterceptor)
-//        .addInterceptor(createOfflineCachePolicy(context))
+        .addInterceptor(createMoviesCachePolicy(context))
 }.build()
 
 private fun createMoviesCachePolicy(context: Context) = object : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-//        if (context.isNetworkConnected()) {
-//            val request = chain.request()
-//                .newBuilder()
-//                .addHeader("api_key", TMDB_API_KEY)
-//                .build()
-//
+        if (context.isNetworkConnected()) {
+            val request = chain.request()
+                .newBuilder()
+                .addHeader(Headers.API_KEY.value, TMDB_API_KEY)
+                .build()
+
 //            val cacheControl = CacheControl.Builder()
 //                .maxAge(2, TimeUnit.HOURS)
 //                .build()
 //
-//            return chain.proceed(request)
-//                .newBuilder()
+            return chain.proceed(request)
+                .newBuilder()
 //                .removeHeader("Pragma")
 //                .removeHeader("Cache-Control")
 //                .addHeader("Cache-Control", cacheControl.toString())
-//                .build()
-//        }
+                .build()
+        }
 
         return chain.proceed(chain.request())
     }
