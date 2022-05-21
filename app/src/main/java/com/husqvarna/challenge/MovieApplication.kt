@@ -15,6 +15,5 @@ class MovieApplication : Application() {
             androidLogger()
             modules(networkModule)
         }
-
     }
 }
