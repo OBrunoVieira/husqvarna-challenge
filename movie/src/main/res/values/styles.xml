@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Home.Movie.Title" parent="">
+        <item name="android:text">@string/home_movies_popular</item>
+        <item name="android:layout_margin">@dimen/spacing_forty</item>
+        <item name="android:textSize">@dimen/text_size_eighteen</item>
+    </style>
+</resources>

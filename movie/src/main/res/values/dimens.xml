@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="movie_radius">@dimen/spacing_twelve</dimen>
+    <dimen name="movie_min_height">@dimen/spacing_three_hundred</dimen>
+</resources>
