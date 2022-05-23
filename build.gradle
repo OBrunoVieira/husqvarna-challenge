@@ -14,6 +14,7 @@ ext {
     final retrofitVersion = '2.9.0'
     final loggingInterceptorVersion = '4.9.3'
     final ktxVersion = '1.7.0'
+    final viewPagerVersion = '1.0.0'
     final appCompatVersion = '1.4.1'
     final materialVersion = '1.6.0'
 
@@ -39,6 +40,10 @@ ext {
 
             ktx        : [
                     "androidx.core:core-ktx:$ktxVersion",
+            ],
+
+            viewpager  : [
+                    "androidx.viewpager2:viewpager2:$viewPagerVersion"
             ],
 
             androidX   : [
