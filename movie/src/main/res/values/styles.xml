@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Home.Movie.Title" parent="">
+    <style name="Home.Movie.Title" parent="Base.TextView">
         <item name="android:text">@string/home_movies_popular</item>
         <item name="android:layout_margin">@dimen/spacing_forty</item>
         <item name="android:textSize">@dimen/text_size_eighteen</item>
+    </style>
+
+    <style name="Page.Movie.Ranking" parent="Base.Bold.TextView">
+        <item name="android:textSize">@dimen/text_size_one_hundred</item>
+        <item name="android:layout_marginStart">@dimen/spacing_twelve</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_thirty_two</item>
+    </style>
+
+    <style name="Page.Movie.Title" parent="Base.TextView">
+        <item name="android:textSize">@dimen/text_size_eighteen</item>
+        <item name="android:layout_marginStart">@dimen/spacing_twelve</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_twelve</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_thirty_two</item>
     </style>
 </resources>
