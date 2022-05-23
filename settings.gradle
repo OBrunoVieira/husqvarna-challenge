@@ -17,3 +17,5 @@ dependencyResolutionManagement {
 rootProject.name = "MovieApplication"
 include ':app'
 include ':home'
+include ':movie'
+include ':tokens'
