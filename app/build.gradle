@@ -55,6 +55,7 @@ android {
 
 dependencies {
     implementation project(':home')
+    implementation project(':tokens')
 
     implementation rootProject.androidDependencies.androidX
     implementation rootProject.androidDependencies.ktx
