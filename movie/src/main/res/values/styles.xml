@@ -3,14 +3,36 @@
 
     <style name="Home.Movie.Title" parent="Base.TextView">
         <item name="android:text">@string/home_movies_popular</item>
-        <item name="android:layout_margin">@dimen/spacing_forty</item>
+        <item name="android:layout_marginTop">@dimen/spacing_forty</item>
+        <item name="android:layout_marginStart">@dimen/spacing_forty</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_forty</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_twenty</item>
         <item name="android:textSize">@dimen/text_size_eighteen</item>
+    </style>
+
+    <style name="Home.Movie.Page.Title" parent="Base.Centered.Bold.TextView">
+        <item name="android:layout_marginTop">@dimen/spacing_twenty</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_eight</item>
+        <item name="android:layout_marginStart">@dimen/spacing_forty</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_forty</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">@dimen/text_size_twenty_four</item>
+    </style>
+
+    <style name="Home.Movie.Page.Rating" parent="Base.Centered.TextView">
+        <item name="android:layout_marginBottom">@dimen/spacing_forty</item>
+        <item name="android:layout_marginStart">@dimen/spacing_forty</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_forty</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:drawableStart">@drawable/vector_star</item>
+        <item name="android:drawablePadding">@dimen/spacing_eight</item>
+        <item name="android:textSize">@dimen/text_size_sixteen</item>
     </style>
 
     <style name="Page.Movie.Ranking" parent="Base.Bold.TextView">
         <item name="android:textSize">@dimen/text_size_one_hundred</item>
-        <item name="android:layout_marginStart">@dimen/spacing_twelve</item>
-        <item name="android:layout_marginBottom">@dimen/spacing_thirty_two</item>
     </style>
 
     <style name="Page.Movie.Title" parent="Base.TextView">
