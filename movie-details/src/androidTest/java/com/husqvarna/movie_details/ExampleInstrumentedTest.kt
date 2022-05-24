@@ -1,4 +1,4 @@
-package com.husqvarna.core
+package com.husqvarna.movie_details
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.husqvarna.core.test", appContext.packageName)
+        assertEquals("com.husqvarna.movie_details.test", appContext.packageName)
     }
 }

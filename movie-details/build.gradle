@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-parcelize'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            zipAlignEnabled false
+            debuggable true
+        }
+
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            debuggable false
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding {
+            enabled true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(':tokens')
+    implementation project(':core')
+
+    implementation rootProject.androidDependencies.androidX
+    implementation rootProject.androidDependencies.ktx
+    implementation rootProject.androidDependencies.design
+    implementation rootProject.androidDependencies.di
+    implementation rootProject.androidDependencies.httpClient
+    implementation rootProject.androidDependencies.coroutines
+    implementation rootProject.androidDependencies.glide
+
+    testImplementation rootProject.androidDependencies.unitTest
+    androidTestImplementation rootProject.androidDependencies.androidTest
+}
