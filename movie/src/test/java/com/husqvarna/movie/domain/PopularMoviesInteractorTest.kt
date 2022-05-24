@@ -1,7 +1,7 @@
 package com.husqvarna.movie.domain
 
-import com.husqvarna.core.CoroutineTestRule
 import com.husqvarna.core.network.createApi
+import com.husqvarna.movie.CoroutineTestRule
 import com.husqvarna.movie.repository.MovieRepository
 import com.husqvarna.movie.repository.models.Movie
 import com.husqvarna.movie.repository.models.MoviesResult
