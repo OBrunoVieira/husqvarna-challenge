@@ -10,6 +10,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+private const val TIMEOUT = 60L
+private const val CACHE_SIZE = 10 * 1024 * 1024L
+
 inline fun <reified T> createApi(context: Context) = run {
     val retrofit = Retrofit.Builder()
         .baseUrl(HOST_TMDB)
@@ -28,9 +31,9 @@ fun buildOkHttpClient(isDebug: Boolean, context: Context) = run {
         }
 
     OkHttpClient.Builder()
-        .cache(Cache(context.cacheDir, 10 * 1024 * 1024))
-        .connectTimeout(60L, TimeUnit.SECONDS)
-        .readTimeout(60L, TimeUnit.SECONDS)
+        .cache(Cache(context.cacheDir, CACHE_SIZE))
+        .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+        .readTimeout(TIMEOUT, TimeUnit.SECONDS)
         .addInterceptor(loggingInterceptor)
 }.build()
 
