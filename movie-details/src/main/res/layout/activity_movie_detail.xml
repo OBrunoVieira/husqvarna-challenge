@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_color">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/movie_detail_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/MovieDetail.ToolBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/movie_detail_toolbar" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/movie_detail_poster"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_twenty"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="@id/movie_detail_item_rating"
+            app:layout_constraintDimensionRatio="9:16"
+            app:layout_constraintEnd_toStartOf="@id/movie_detail_item_barrier"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_toolbar" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/movie_detail_item_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="movie_detail_item_genre,
+            movie_detail_item_duration,
+            movie_detail_item_rating" />
+
+        <com.husqvarna.movie_details.ui.views.ItemDetailView
+            android:id="@+id/movie_detail_item_genre"
+            style="@style/MovieDetail.Item.Genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/movie_detail_poster"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_toolbar" />
+
+        <com.husqvarna.movie_details.ui.views.ItemDetailView
+            android:id="@+id/movie_detail_item_duration"
+            style="@style/MovieDetail.Item.Duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/movie_detail_poster"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_item_genre" />
+
+        <com.husqvarna.movie_details.ui.views.ItemDetailView
+            android:id="@+id/movie_detail_item_rating"
+            style="@style/MovieDetail.Item.Rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/movie_detail_poster"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_item_duration" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/movie_detail_progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/movie_detail_info_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="movie_detail_title_text_view,
+            movie_detail_divider,
+            movie_detail_synopsis_title_text_view,
+            movie_detail_synopsis_description_text_view,
+            movie_detail_item_rating,
+            movie_detail_item_duration,
+            movie_detail_item_genre,
+            movie_detail_poster" />
+
+        <com.husqvarna.tokens.ui.views.ErrorView
+            android:id="@+id/movie_detail_error_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_item_rating" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_detail_title_text_view"
+            style="@style/MovieDetail.Title.TextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_item_rating" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/movie_detail_divider"
+            style="@style/MovieDetail.Divider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_title_text_view" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_detail_synopsis_title_text_view"
+            style="@style/MovieDetail.Synopsis.TextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_divider" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/movie_detail_synopsis_description_text_view"
+            style="@style/MovieDetail.Synopsis.Description.TextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_synopsis_title_text_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
