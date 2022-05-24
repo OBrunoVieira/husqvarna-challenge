@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    name: Build Project
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
@@ -32,6 +33,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+        run: echo TMDB_API_KEY=\"$TMDB_API_KEY\" > ./local.properties
       - name: Build APK
         run: bash ./gradlew assembleDebug --stacktrace
       - name: Upload APK
