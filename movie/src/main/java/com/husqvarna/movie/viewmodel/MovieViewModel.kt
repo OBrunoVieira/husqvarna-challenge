@@ -7,7 +7,7 @@ import com.husqvarna.core.viewmodel.DataSource
 import com.husqvarna.movie.domain.PopularMovieUseCase
 import com.husqvarna.movie.ui.models.MovieUI
 
-class MovieViewModel(val popularMovieUseCase: PopularMovieUseCase) : ViewModel() {
+class MovieViewModel(private val popularMovieUseCase: PopularMovieUseCase) : ViewModel() {
 
     val liveDataPopularMovies = MutableLiveData<DataSource<List<MovieUI>>>()
 
@@ -29,7 +29,7 @@ class MovieViewModel(val popularMovieUseCase: PopularMovieUseCase) : ViewModel()
                 liveDataPopularMovies.postValue(DataSource.success(data))
             },
             onError = {
-                liveDataPopularMovies.postValue(DataSource.error())
+                liveDataPopularMovies.postValue(DataSource.error(it))
             })
     }
 
