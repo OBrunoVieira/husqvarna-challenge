@@ -32,6 +32,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: Access TMDB_API_KEY
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: echo TMDB_API_KEY=\"$TMDB_API_KEY\" > ./local.properties
       - name: Run Tests
         run: bash ./gradlew test --stacktrace
   debug-apk:
