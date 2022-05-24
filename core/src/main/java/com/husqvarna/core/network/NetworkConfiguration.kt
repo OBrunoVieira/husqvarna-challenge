@@ -13,9 +13,9 @@ import java.util.concurrent.TimeUnit
 private const val TIMEOUT = 60L
 private const val CACHE_SIZE = 10 * 1024 * 1024L
 
-inline fun <reified T> createApi(context: Context) = run {
+inline fun <reified T> createApi(context: Context, baseURL: String = HOST_TMDB) = run {
     val retrofit = Retrofit.Builder()
-        .baseUrl(HOST_TMDB)
+        .baseUrl(baseURL)
         .client(buildOkHttpClient(DEBUG, context))
         .addConverterFactory(GsonConverterFactory.create())
         .build()
