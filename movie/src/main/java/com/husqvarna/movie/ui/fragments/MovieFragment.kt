@@ -13,11 +13,9 @@ import com.husqvarna.movie.ui.listeners.PageClickListener
 import com.husqvarna.movie.ui.models.MovieUI
 
 class MovieFragment : Fragment() {
-
-    private lateinit var binding: FragmentMovieBinding
-
     companion object {
         private const val EXTRA_MOVIE = "EXTRA_MOVIE"
+        private const val INSTANCE_STATE_MOVIE = "INSTANCE_STATE_MOVIE"
 
         fun newInstance(movie: MovieUI?) = MovieFragment().apply {
             arguments = Bundle().apply {
@@ -25,6 +23,8 @@ class MovieFragment : Fragment() {
             }
         }
     }
+
+    private lateinit var binding: FragmentMovieBinding
 
     private var movie: MovieUI? = null
     private var listener: PageClickListener? = null
@@ -39,9 +39,8 @@ class MovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let {
-            movie = it.getParcelable(EXTRA_MOVIE)
-        }
+        movie = savedInstanceState?.getParcelable(INSTANCE_STATE_MOVIE)
+            ?: arguments?.getParcelable(EXTRA_MOVIE)
 
         binding.vhMovieCardView.setOnClickListener {
             listener?.onPageClicked(movie)
@@ -52,6 +51,11 @@ class MovieFragment : Fragment() {
                 .load(BuildConfig.TMDB_IMAGE_PATH.format(it))
                 .into(binding.vhMoviePosterImageView)
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(INSTANCE_STATE_MOVIE, movie)
     }
 
     override fun onAttach(context: Context) {

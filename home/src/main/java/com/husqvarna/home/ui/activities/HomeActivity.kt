@@ -20,6 +20,10 @@ import com.husqvarna.movie_details.ui.activities.MovieDetailActivity.Companion.E
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity(), PageClickListener {
+    companion object {
+        private const val INSTANCE_STATE_MOVIES = "INSTANCE_STATE_MOVIES"
+    }
+
     private var activityHomeBinding: ActivityHomeBinding? = null
     private val binding by lazy { activityHomeBinding!! }
 
@@ -30,8 +34,12 @@ class HomeActivity : AppCompatActivity(), PageClickListener {
     private val movieAdapter by lazy { MovieAdapter(this) }
     private val movieViewModel: MovieViewModel by viewModel()
 
+    private var movies: ArrayList<MovieUI>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        movies = savedInstanceState?.getParcelableArrayList(INSTANCE_STATE_MOVIES)
+
         setContentView(
             ActivityHomeBinding
                 .inflate(layoutInflater)
@@ -40,8 +48,17 @@ class HomeActivity : AppCompatActivity(), PageClickListener {
 
         setupViewPager()
 
-        movieViewModel.liveDataPopularMovies.observe(this, observePopularMovies())
-        movieViewModel.getTop10PopularMovies()
+        movies?.let {
+            buildSuccessfulState(it)
+        } ?: run {
+            movieViewModel.liveDataPopularMovies.observe(this, observePopularMovies())
+            movieViewModel.getTop10PopularMovies()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArrayList(INSTANCE_STATE_MOVIES, movies)
     }
 
     override fun onPageClicked(movie: MovieUI?) {
@@ -79,25 +96,32 @@ class HomeActivity : AppCompatActivity(), PageClickListener {
             }
 
             DataState.SUCCESS -> {
-                binding.homeProgressBar.isGone = true
-                binding.homeErrorView.isGone = true
-                binding.homeGroup.isVisible = true
-
-                it.data?.let { data ->
-                    movieAdapter.setItems(data)
-                }
+                buildSuccessfulState(it.data)
             }
 
             DataState.ERROR -> {
-                binding.homeProgressBar.isGone = true
-                binding.homeGroup.isGone = true
-                binding.homeErrorView
-                    .throwable(it.throwable)
-                    .reload {
-                        movieViewModel.getTop10PopularMovies()
-                    }
-                    .show()
+                buildErrorState(it.throwable)
             }
         }
+    }
+
+    private fun buildSuccessfulState(items: List<MovieUI>?) = binding.run {
+        this@HomeActivity.movies = items?.let { ArrayList(it) }
+        homeProgressBar.isGone = true
+        homeErrorView.isGone = true
+        homeGroup.isVisible = true
+
+        items?.let { movieAdapter.setItems(items) }
+    }
+
+    private fun buildErrorState(throwable: Throwable?) = binding.run {
+        homeProgressBar.isGone = true
+        homeGroup.isGone = true
+        homeErrorView
+            .throwable(throwable)
+            .reload {
+                movieViewModel.getTop10PopularMovies()
+            }
+            .show()
     }
 }
