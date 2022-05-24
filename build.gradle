@@ -19,6 +19,8 @@ ext {
     final materialVersion = '1.6.0'
     final coroutinesVersion = '1.6.1'
     final glideVersion = '4.13.2'
+    final mockkVersion = '1.12.4'
+    final robolectricVersion = '4.8'
 
     final espressoVersion = '3.4.0'
     final androidJunitVersion = '1.1.3'
@@ -63,7 +65,9 @@ ext {
             ],
 
             unitTest   : [
-                    "junit:junit:$junitVersion"
+                    "junit:junit:$junitVersion",
+                    "io.mockk:mockk:$mockkVersion",
+                    "org.robolectric:robolectric:$robolectricVersion"
             ],
 
             androidTest: [
