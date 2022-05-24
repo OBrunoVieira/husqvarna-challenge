@@ -50,10 +50,12 @@ android {
 dependencies {
     implementation project (':movie')
     implementation project (':tokens')
+    implementation project (':core')
 
     implementation rootProject.androidDependencies.androidX
     implementation rootProject.androidDependencies.ktx
     implementation rootProject.androidDependencies.design
+    implementation rootProject.androidDependencies.di
     implementation rootProject.androidDependencies.viewpager
 
     testImplementation rootProject.androidDependencies.unitTest

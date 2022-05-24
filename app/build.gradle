@@ -13,8 +13,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField 'String', 'HOST_TMDB', '"https://api.themoviedb.org/3/"'
-        buildConfigField 'String', 'TMDB_API_KEY', '"961d472e0fb21cd1331f991bd214c83b"'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -51,16 +49,20 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    packagingOptions {
+        resources.excludes += "DebugProbesKt.bin"
+    }
 }
 
 dependencies {
     implementation project(':home')
+    implementation project(':movie')
     implementation project(':tokens')
 
     implementation rootProject.androidDependencies.androidX
     implementation rootProject.androidDependencies.ktx
     implementation rootProject.androidDependencies.di
-    implementation rootProject.androidDependencies.httpClient
     implementation rootProject.androidDependencies.design
 
     testImplementation rootProject.androidDependencies.unitTest
