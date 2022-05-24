@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="empty_text">---</string>
+
+    <!--  ErrorView  -->
+    <string name="error_try_again">Try again</string>
+    <string name="error_internet_title">No internet</string>
+    <string name="error_generic_title">Something went wrong</string>
+</resources>
