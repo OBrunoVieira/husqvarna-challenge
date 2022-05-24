@@ -49,6 +49,7 @@ android {
 
 dependencies {
     implementation project (':movie')
+    implementation project (':movie-details')
     implementation project (':tokens')
     implementation project (':core')
 
