@@ -3,6 +3,13 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+String getApiKey() {
+    def propFile = rootProject.file("./local.properties")
+    def properties = new Properties()
+    properties.load(new FileInputStream(propFile))
+    return properties['TMDB_API_KEY']
+}
+
 android {
     compileSdk 32
 
@@ -12,7 +19,7 @@ android {
 
         buildConfigField 'String', 'HOST_TMDB', '"https://api.themoviedb.org/3/"'
         buildConfigField 'String', 'TMDB_IMAGE_PATH', '"https://image.tmdb.org/t/p/original/%s"'
-        buildConfigField 'String', 'TMDB_API_KEY', '"961d472e0fb21cd1331f991bd214c83b"'
+        buildConfigField 'String', 'TMDB_API_KEY', getApiKey()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
