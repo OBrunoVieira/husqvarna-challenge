@@ -23,6 +23,7 @@ You'll be able to follow the top 10 movies in the world.
 - Top 10 movies
 - Movies' detail
 - Offline usage
+- CI with Github Actions
 
 ## Modules
 
