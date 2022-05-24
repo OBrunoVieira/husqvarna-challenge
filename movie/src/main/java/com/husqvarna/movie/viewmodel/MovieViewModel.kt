@@ -15,8 +15,8 @@ class MovieViewModel(val popularMovieUseCase: PopularMovieUseCase) : ViewModel()
         liveDataPopularMovies.postValue(DataSource.loading())
 
         popularMovieUseCase.getTop10(viewModelScope,
-            onSuccess = { results ->
-                val data = results?.movies?.mapIndexed { index, item ->
+            onSuccess = { movies ->
+                val data = movies?.mapIndexed { index, item ->
                     MovieUI(
                         item.id,
                         item.title,
