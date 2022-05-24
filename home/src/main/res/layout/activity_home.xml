@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/background_color"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/home_title_text_view"
         style="@style/Home.Movie.Title"
         android:layout_width="match_parent"
@@ -17,18 +17,52 @@
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_chainStyle="packed" />
 
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/home_progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_forty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_title_text_view" />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/home_view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/spacing_twenty"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:layout_marginBottom="@dimen/spacing_forty"
         android:paddingStart="@dimen/spacing_forty"
         android:paddingEnd="@dimen/spacing_forty"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/home_pager_title_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/home_title_text_view" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/home_pager_title_text_view"
+        style="@style/Home.Movie.Page.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/home_pager_voting_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/home_pager_voting_text_view"
+        style="@style/Home.Movie.Page.Rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/home_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="home_view_pager, home_pager_voting_text_view, home_pager_title_text_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
