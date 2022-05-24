@@ -32,12 +32,6 @@ android {
         }
     }
 
-    sourceSets {
-        test {
-            java.srcDir project(":core").file("src/test/java")
-        }
-    }
-
     buildFeatures {
         viewBinding {
             enabled true

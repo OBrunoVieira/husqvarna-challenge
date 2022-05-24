@@ -32,12 +32,6 @@ android {
         }
     }
 
-    sourceSets {
-        test {
-            java.srcDir project(":core").file("src/test/java")
-        }
-    }
-
     buildFeatures {
         viewBinding {
             enabled true
@@ -66,5 +60,6 @@ dependencies {
     implementation rootProject.androidDependencies.coroutines
     implementation rootProject.androidDependencies.glide
 
+    testImplementation project(':core')
     testImplementation rootProject.androidDependencies.unitTest
 }
