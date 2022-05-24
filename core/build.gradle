@@ -47,4 +47,6 @@ dependencies {
     implementation rootProject.androidDependencies.ktx
     implementation rootProject.androidDependencies.di
     implementation rootProject.androidDependencies.httpClient
+
+    testImplementation rootProject.androidDependencies.unitTest
 }
