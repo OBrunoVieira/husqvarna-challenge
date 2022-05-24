@@ -1,4 +1,4 @@
-package com.husqvarna.home.ui.views
+package com.husqvarna.home.ui.transformers
 
 import android.view.View
 import androidx.annotation.Px

@@ -10,7 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.husqvarna.core.viewmodel.DataSource
 import com.husqvarna.core.viewmodel.DataState
 import com.husqvarna.home.databinding.ActivityHomeBinding
-import com.husqvarna.home.ui.views.MarginScalePageTransformer
+import com.husqvarna.home.ui.transformers.MarginScalePageTransformer
 import com.husqvarna.movie.ui.adapters.MovieAdapter
 import com.husqvarna.movie.ui.listeners.PageClickListener
 import com.husqvarna.movie.ui.models.MovieUI
