@@ -1,6 +1,7 @@
 package com.husqvarna.home.ui.transformers
 
 import android.view.View
+import android.view.ViewParent
 import androidx.annotation.Px
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -9,7 +10,7 @@ import kotlin.math.abs
 class MarginScalePageTransformer(@Px val marginPx: Int) : ViewPager2.PageTransformer {
 
     companion object {
-        private const val ILLEGAL_VIEW_PAGER_REFERENCE =
+        const val ILLEGAL_VIEW_PAGER_REFERENCE =
             "Expected the page view to be managed by a ViewPager2 instance."
     }
 
@@ -25,14 +26,18 @@ class MarginScalePageTransformer(@Px val marginPx: Int) : ViewPager2.PageTransfo
         page.scaleY = 1 - (0.25f * abs(position))
     }
 
-    private fun requireViewPager(page: View): ViewPager2 {
-        val parent = page.parent
-        val parentParent = parent.parent
-
-        if (parent is RecyclerView && parentParent is ViewPager2) {
-            return parentParent
-        }
-
-        throw IllegalStateException(ILLEGAL_VIEW_PAGER_REFERENCE)
+    private fun requireViewPager(page: View) = run {
+        val recyclerViewParent = page.parent
+        val viewPagerParent = recyclerViewParent.parent
+        requireViewPager(recyclerViewParent, viewPagerParent)
     }
+
+    internal fun requireViewPager(recyclerView: ViewParent, viewPager: ViewParent): ViewPager2 =
+        run {
+            if (recyclerView is RecyclerView && viewPager is ViewPager2) {
+                return viewPager
+            }
+
+            throw IllegalStateException(ILLEGAL_VIEW_PAGER_REFERENCE)
+        }
 }
