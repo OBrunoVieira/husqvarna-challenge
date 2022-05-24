@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import androidx.core.view.isVisible
 import com.husqvarna.tokens.R
 import com.husqvarna.tokens.databinding.ViewErrorBinding
 import com.husqvarna.tokens.ui.extensions.compoundTopDrawable
@@ -48,20 +47,13 @@ class ErrorView @JvmOverloads constructor(
     }
 
     fun build() = binding?.run {
-        errorTextViewTitle.isVisible = true
         when (errorType) {
             GENERIC_ERROR -> {
-                errorTextViewDescription.visibility = GONE
-                errorButton.visibility = VISIBLE
-
                 errorTextViewTitle.compoundTopDrawable(R.drawable.vector_generic_error)
                 errorTextViewTitle.setText(R.string.error_generic_title)
             }
 
             else -> {
-                errorTextViewDescription.visibility = GONE
-                errorButton.visibility = VISIBLE
-
                 errorTextViewTitle.compoundTopDrawable(R.drawable.vector_no_internet)
                 errorTextViewTitle.setText(R.string.error_internet_title)
             }
