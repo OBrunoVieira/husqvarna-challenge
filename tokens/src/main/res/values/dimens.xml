@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="spacing_one">1dp</dimen>
+    <dimen name="spacing_four">4dp</dimen>
     <dimen name="spacing_eight">8dp</dimen>
+    <dimen name="spacing_ten">10dp</dimen>
     <dimen name="spacing_twelve">12dp</dimen>
     <dimen name="spacing_twenty">20dp</dimen>
     <dimen name="spacing_twenty_four">24dp</dimen>
     <dimen name="spacing_thirty_two">32dp</dimen>
     <dimen name="spacing_forty">40dp</dimen>
+    <dimen name="spacing_one_hundred">100dp</dimen>
     <dimen name="spacing_three_hundred">300dp</dimen>
 
+    <dimen name="text_size_twelve">12sp</dimen>
     <dimen name="text_size_sixteen">16sp</dimen>
     <dimen name="text_size_eighteen">18sp</dimen>
+    <dimen name="text_size_twenty">20sp</dimen>
     <dimen name="text_size_twenty_four">24sp</dimen>
     <dimen name="text_size_thirty_two">32sp</dimen>
     <dimen name="text_size_one_hundred">100sp</dimen>
+
+    <dimen name="error_button_stroke_width">@dimen/spacing_one</dimen>
 </resources>
