@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="home_movies_popular"><b>Popular</b> Movies</string>
+    <string name="home_movies_popular"><b>Top 10:</b> Popular Movies</string>
 </resources>
