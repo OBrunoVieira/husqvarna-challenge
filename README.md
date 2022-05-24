@@ -53,6 +53,9 @@ You'll be able to follow the top 10 movies in the world.
 - [KTX](https://developer.android.com/kotlin/ktx)
 - [ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2)
 - [Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
+- [Mockk](https://mockk.io/)
+- [Robolectric](http://robolectric.org/)
+- [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
 
 ## Sources
 
