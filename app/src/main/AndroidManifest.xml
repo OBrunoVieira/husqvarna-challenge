@@ -26,6 +26,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.husqvarna.movie_details.ui.activities.MovieDetailActivity" />
+
     </application>
 
 </manifest>
