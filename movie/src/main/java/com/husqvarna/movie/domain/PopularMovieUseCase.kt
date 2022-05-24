@@ -7,6 +7,6 @@ interface PopularMovieUseCase {
     fun getTop10(
         scope: CoroutineScope,
         onSuccess: (List<Movie>?) -> Unit,
-        onError: (String) -> Unit
+        onError: (Throwable) -> Unit
     )
 }

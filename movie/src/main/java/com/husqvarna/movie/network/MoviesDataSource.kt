@@ -1,6 +1,6 @@
 package com.husqvarna.movie.network
 
-import com.husqvarna.movie.BuildConfig
+import com.husqvarna.core.BuildConfig
 import com.husqvarna.movie.repository.models.MoviesResult
 import retrofit2.Response
 import retrofit2.http.GET

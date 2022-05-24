@@ -12,7 +12,7 @@ class PopularMoviesInteractor(private val repository: MovieRepository) : Popular
     override fun getTop10(
         scope: CoroutineScope,
         onSuccess: (List<Movie>?) -> Unit,
-        onError: (String) -> Unit
+        onError: (Throwable) -> Unit
     ) {
         scope.launch(Dispatchers.IO) {
             try {
@@ -27,11 +27,11 @@ class PopularMoviesInteractor(private val repository: MovieRepository) : Popular
 
                         onSuccess(movies)
                     } else {
-                        onError(popularMovies.message())
+                        onError(Exception(popularMovies.message()))
                     }
                 }
             } catch (exception: Exception) {
-                onError(exception.message.orEmpty())
+                onError(exception)
             }
         }
     }
