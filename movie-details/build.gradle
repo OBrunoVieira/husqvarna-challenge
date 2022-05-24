@@ -60,6 +60,5 @@ dependencies {
     implementation rootProject.androidDependencies.coroutines
     implementation rootProject.androidDependencies.glide
 
-    testImplementation project(':core')
     testImplementation rootProject.androidDependencies.unitTest
 }
