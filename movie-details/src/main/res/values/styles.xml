@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MovieDetail.ToolBar" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="Item.Detail.Title" parent="Base.Centered.TextView">
+        <item name="android:textSize">@dimen/text_size_twelve</item>
+        <item name="android:layout_marginTop">@dimen/spacing_eight</item>
+    </style>
+
+    <style name="Item.Detail.Value" parent="Base.Centered.Bold.TextView">
+        <item name="android:textSize">@dimen/text_size_twelve</item>
+    </style>
+
+    <style name="MovieDetail.Item.Genre" parent="">
+        <item name="vid_title">@string/movie_detail_item_genre</item>
+        <item name="vid_icon">@drawable/vector_genre</item>
+        <item name="vid_value">@string/empty_text</item>
+        <item name="android:minWidth">@dimen/spacing_one_hundred</item>
+        <item name="android:padding">@dimen/spacing_ten</item>
+        <item name="android:layout_marginTop">@dimen/spacing_twenty</item>
+    </style>
+
+    <style name="MovieDetail.Item.Duration" parent="">
+        <item name="vid_title">@string/movie_detail_item_duration</item>
+        <item name="vid_icon">@drawable/vector_duration</item>
+        <item name="vid_value">@string/empty_text</item>
+        <item name="android:minWidth">@dimen/spacing_one_hundred</item>
+        <item name="android:padding">@dimen/spacing_ten</item>
+        <item name="android:layout_marginTop">@dimen/spacing_twenty</item>
+    </style>
+
+    <style name="MovieDetail.Item.Rating" parent="">
+        <item name="vid_title">@string/movie_detail_item_rating</item>
+        <item name="vid_icon">@drawable/vector_rating</item>
+        <item name="vid_value">@string/empty_text</item>
+        <item name="android:minWidth">@dimen/spacing_one_hundred</item>
+        <item name="android:padding">@dimen/spacing_ten</item>
+        <item name="android:layout_marginTop">@dimen/spacing_twenty</item>
+    </style>
+
+    <style name="MovieDetail.Divider" parent="">
+        <item name="android:minHeight">@dimen/spacing_one</item>
+        <item name="android:background">@color/border_color</item>
+        <item name="android:layout_marginStart">@dimen/spacing_forty</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_forty</item>
+        <item name="android:layout_marginTop">@dimen/spacing_twenty</item>
+    </style>
+
+    <style name="MovieDetail.Title.TextView" parent="Base.Bold.TextView">
+        <item name="android:textSize">@dimen/text_size_twenty</item>
+        <item name="android:layout_marginStart">@dimen/spacing_forty</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_forty</item>
+        <item name="android:layout_marginTop">@dimen/spacing_twenty</item>
+    </style>
+
+    <style name="MovieDetail.Synopsis.TextView" parent="Base.Bold.TextView">
+        <item name="android:layout_marginStart">@dimen/spacing_forty</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_forty</item>
+        <item name="android:layout_marginTop">@dimen/spacing_twenty</item>
+        <item name="android:text">@string/movie_detail_synopsis</item>
+        <item name="android:textSize">@dimen/text_size_sixteen</item>
+    </style>
+
+    <style name="MovieDetail.Synopsis.Description.TextView" parent="Base.TextView">
+        <item name="android:layout_marginStart">@dimen/spacing_forty</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_forty</item>
+        <item name="android:layout_marginTop">@dimen/spacing_ten</item>
+    </style>
+
+</resources>

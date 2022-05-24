@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movie_detail_toolbar">Movie Detail</string>
+    <string name="movie_detail_item_genre">Genre</string>
+    <string name="movie_detail_item_duration">Duration</string>
+    <string name="movie_detail_item_rating">Rating</string>
+    <string name="movie_detail_synopsis">Synopsis</string>
+    <string name="movie_detail_runtime">%d min</string>
+</resources>

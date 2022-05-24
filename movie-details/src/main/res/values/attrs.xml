@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ItemDetailView">
+        <attr name="vid_icon" format="integer" />
+        <attr name="vid_title" format="string" />
+        <attr name="vid_value" format="string" />
+    </declare-styleable>
+
+</resources>
