@@ -4,6 +4,14 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="Base.Centered.TextView" parent="Base.TextView">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Base.Centered.Bold.TextView" parent="Base.Bold.TextView">
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="Base.Bold.TextView" parent="Base.TextView">
         <item name="android:fontFamily">sans-serif-black</item>
     </style>
