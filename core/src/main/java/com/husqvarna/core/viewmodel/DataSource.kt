@@ -8,7 +8,7 @@ data class DataSource<T>(
     companion object {
         fun <T> success(result: T?) = DataSource(DataState.SUCCESS, result)
 
-        fun <T> error() = DataSource<T>(DataState.ERROR)
+        fun <T> error(throwable: Throwable?) = DataSource<T>(DataState.ERROR, throwable = throwable)
 
         fun <T> loading() = DataSource<T>(DataState.LOADING)
     }
