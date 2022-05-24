@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class PopularMoviesInteractor(val repository: MovieRepository) : PopularMovieUseCase {
+class PopularMoviesInteractor(private val repository: MovieRepository) : PopularMovieUseCase {
 
     override fun getTop10(
         scope: CoroutineScope,
