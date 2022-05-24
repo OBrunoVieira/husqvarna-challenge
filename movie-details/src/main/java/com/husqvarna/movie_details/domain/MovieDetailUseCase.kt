@@ -7,7 +7,7 @@ interface MovieDetailUseCase {
     fun getDetail(
         movieId: Long,
         scope: CoroutineScope,
-        onSuccess: (MovieDetail?) -> Unit,
-        onError: (Throwable) -> Unit
+        onSuccess: (MovieDetail?) -> Unit = {},
+        onError: (Throwable) -> Unit = {}
     )
 }

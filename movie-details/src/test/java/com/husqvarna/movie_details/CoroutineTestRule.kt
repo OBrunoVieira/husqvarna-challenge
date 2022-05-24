@@ -1,4 +1,4 @@
-package com.husqvarna.core
+package com.husqvarna.movie_details
 
 import com.husqvarna.core.network.DispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
