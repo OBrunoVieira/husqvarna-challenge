@@ -33,6 +33,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: Access TMDB_API_KEY
         run: echo TMDB_API_KEY=\"$TMDB_API_KEY\" > ./local.properties
       - name: Build APK
         run: bash ./gradlew assembleDebug --stacktrace
