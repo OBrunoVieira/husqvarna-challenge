@@ -1,5 +1,6 @@
 package com.husqvarna.movie.domain
 
+import com.husqvarna.core.network.DispatcherProvider
 import com.husqvarna.movie.repository.MovieRepository
 import com.husqvarna.movie.repository.models.Movie
 import kotlinx.coroutines.CoroutineScope
@@ -7,24 +8,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class PopularMoviesInteractor(private val repository: MovieRepository) : PopularMovieUseCase {
+class PopularMoviesInteractor(
+    private val dispatcher: DispatcherProvider,
+    private val repository: MovieRepository
+) : PopularMovieUseCase {
 
     override fun getTop10(
         scope: CoroutineScope,
         onSuccess: (List<Movie>?) -> Unit,
         onError: (Throwable) -> Unit
     ) {
-        scope.launch(Dispatchers.IO) {
+        scope.launch(dispatcher.io()) {
             try {
                 val popularMovies = repository.getPopularMovies()
 
-                withContext(Dispatchers.Main) {
+                withContext(dispatcher.main()) {
                     if (popularMovies.isSuccessful) {
-                        val movies =
-                            popularMovies.body()?.movies
-                                ?.sortedByDescending { it.voteAverage }
-                                ?.take(10)
-
+                        val movies = sortMoviesByDescending(popularMovies.body()?.movies)
                         onSuccess(movies)
                     } else {
                         onError(Exception(popularMovies.message()))
@@ -35,4 +35,8 @@ class PopularMoviesInteractor(private val repository: MovieRepository) : Popular
             }
         }
     }
+
+    internal fun sortMoviesByDescending(movies: List<Movie>?) =
+        movies?.sortedByDescending { it.voteAverage }
+            ?.take(10)
 }

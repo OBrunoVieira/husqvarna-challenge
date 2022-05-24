@@ -6,7 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 interface PopularMovieUseCase {
     fun getTop10(
         scope: CoroutineScope,
-        onSuccess: (List<Movie>?) -> Unit,
-        onError: (Throwable) -> Unit
+        onSuccess: (List<Movie>?) -> Unit = {},
+        onError: (Throwable) -> Unit = {}
     )
 }
