@@ -22,9 +22,21 @@ jobs:
         run: echo TMDB_API_KEY=\"$TMDB_API_KEY\" > ./local.properties
       - name: Build the app
         run: ./gradlew assemble
+  test:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Run Tests
+        run: bash ./gradlew test --stacktrace
   debug-apk:
     name: Generate APK
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,6 +46,8 @@ jobs:
         with:
           java-version: 11
       - name: Access TMDB_API_KEY
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: echo TMDB_API_KEY=\"$TMDB_API_KEY\" > ./local.properties
       - name: Build APK
         run: bash ./gradlew assembleDebug --stacktrace
